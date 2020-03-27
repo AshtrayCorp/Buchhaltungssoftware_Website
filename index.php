@@ -12,34 +12,26 @@
 	<hr>
 
 	<form action="db_trxsubmit.php" method="post">		
-		<p>Betrag:</p>
+		<p1>Betrag:</p1> <br>
 		<input type="number" name="AMOUNT" step="0.01" value="trxamount"> <br>
 		
 		<?php
-			include 'db_connection.php';
-			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-			
-			$trxcatquery = 'SELECT CATEGORY_KEY FROM MAP_TRX_CATEGORY;';
-			$categories = mysqli_query($conn,$trxcatquery);
-			echo "<p>Kategorieauswahl: </p>";
+			$DB = new PDO('mysql:host=localhost;dbname=buchhaltung;charset=utf8', 'pdo_user', 'buchhaltung');
+			echo '<p2> Kategorie </p2> <br>';
 			echo '<select name="CATEGORY" id="CATEGORY">';
-				while ($row = mysqli_fetch_assoc($categories)) {	//Aufteilen des Arrays in Kategorieoptionen
-					foreach($row as $key => $category);
-					echo '<option value="'.$category.'">'.$category.'</option>';
+			$trxcatquery = 'SELECT CATEGORY_KEY FROM MAP_TRX_CATEGORY;';
+			foreach($DB->query($trxcatquery) as $row){
+					echo '<option value="'.$row["CATEGORY_KEY"].'">'.$row["CATEGORY_KEY"].'</option>';
 				}
-			echo '</select> <br>';
+			echo '</select> <br>'; 
 			
-			$accountsquery = 'SELECT DESCRIPTION FROM DB_ACCOUNTS;';
-			$accounts = mysqli_query($conn, $accountsquery);
-			echo "<p>Kontoauswahl: </p>";
+			echo '<p3> Konto </p3> <br>';
 			echo '<select name="ACCOUNT" id="ACCOUNT">';
-				while ($row = mysqli_fetch_assoc($accounts)) {
-					foreach($row as $key => $account);
-					echo '<option value="'.$account.'">'.$account.'</option>';
-
-				}
+			$accquery = 'SELECT DESCRIPTION FROM DB_ACCOUNTS;';
+			foreach($DB->query($accquery) as $row){
+				echo'<option value="'.$row["DESCRIPTION"].'">'.$row["DESCRIPTION"].'</option>';
+			}
 			echo '</select>';
-			mysqli_close($conn);
 		?> 
 		<br> 
 		<br>

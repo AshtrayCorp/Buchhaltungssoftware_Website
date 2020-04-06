@@ -1,43 +1,40 @@
 <!DOCTYPE html>
+<html>
 
-<html lang="ger" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title>Buchhaltungssoftware INDEX V2</title>
-	</head>
-	
-	<body>
-	
-	<h1>Transaktionserfassung</h1>
-	<hr>
+  <head>
+    <meta charset="utf-8">
+    <title> Buchhaltungssoftware index.php V2 </title>
+    <link rel="stylesheet" type="text/css" href="\Buchhaltungssoftware_Website\style.css">
+  </head>
+  <body>
 
-	<form action="db_trxsubmit.php" method="post">		
-		<p1>Betrag:</p1> <br>
-		<input type="number" name="AMOUNT" step="0.01" value="trxamount"> <br>
-		
-		<?php
-			$DB = new PDO('mysql:host=localhost;dbname=buchhaltung;charset=utf8', 'pdo_user', 'buchhaltung');
-			echo '<p2> Kategorie </p2> <br>';
-			echo '<select name="CATEGORY" id="CATEGORY">';
-			$trxcatquery = 'SELECT CATEGORY_KEY FROM MAP_TRX_CATEGORY;';
-			foreach($DB->query($trxcatquery) as $row){
-					echo '<option value="'.$row["CATEGORY_KEY"].'">'.$row["CATEGORY_KEY"].'</option>';
-				}
-			echo '</select> <br>'; 
-			
-			echo '<p3> Konto </p3> <br>';
-			echo '<select name="ACCOUNT" id="ACCOUNT">';
-			$accquery = 'SELECT DESCRIPTION FROM DB_ACCOUNTS;';
-			foreach($DB->query($accquery) as $row){
-				echo'<option value="'.$row["DESCRIPTION"].'">'.$row["DESCRIPTION"].'</option>';
-			}
-			echo '</select>';
-		?> 
-		<br> 
-		<br>
-		<input type="submit" value="Transaktion hinzufügen" id="submit">
-	</form>
-	
+    <header>
+      <a class="header" href="\Buchhaltungssoftware_Website\index.php">
+        <h1 class="header">Buchaltungssoftware</h1>
+      </a>
+    </header>
+    <div class="topnav">
 
-	</body>
+        <ul>
+          <li> <a href="/contact/index.php">Kontakt</a> </li>
+          <li> <a href="/FAQ/index.php">FAQ</a> </li>
+          <li> <a href="\Buchhaltungssoftware_Website\newregistration\index.php">Login</a> </li>
+        </ul>
+
+    </div>
+
+    <div class="startseitentext">
+      <p>
+        Herzlich Willkommen auf der Homepage der Buchhaltungssoftware<br>
+        der Ashtray Coorporation. Mit diesem Tool soll es möglich sein<br>
+        seine persönlichen Finanzen zu tracken, analysieren und auf visueller<br>
+        Basis auszuwerten um so seinen Cashflow leichter Verfolgen zu können<br>
+      </p>
+    </div>
+    <div class="newregistration">
+      Falls sie ein neuer Nutzer sind müssen Sie sich vor beginn <br>
+      ein Benutzerkonto anlegen.
+    </div>
+  </body>
+
 </html>

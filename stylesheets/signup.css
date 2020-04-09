@@ -1,0 +1,36 @@
+/* Styling for signup.php */
+.main-container h2{
+  font-size: 30px;
+  text-align: center;
+  font-family: arial;
+  color: black;
+}
+.signup-form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: #c1c1c1;
+
+}
+.signup-form input {
+  width: 100%;
+  height: 50px;
+
+}
+.signup-form button {
+  margin: auto;
+  display: block;
+  width: 50%;
+  height: 50px;
+  background-color: #c1c1c1;
+  border: none;
+  font-family: arial;
+  color: black;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.signup-form button:hover {
+  background-color: black;
+  color: white;
+}

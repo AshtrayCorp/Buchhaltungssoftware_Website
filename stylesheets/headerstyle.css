@@ -117,10 +117,11 @@ input, select {
   color: white;
 }
 body {
-  background-color: #ccc;
+  background-color: white;
 }
 .main-container{
   margin:40px;
+  background-color: #7c7c7c;
 }
 
 /* Navigation Bar List Header */

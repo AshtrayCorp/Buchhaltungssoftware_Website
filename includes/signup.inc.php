@@ -43,7 +43,7 @@
               //Insert the user into the database
               $sqlinsert = "INSERT INTO users (username, firstname, lastname, email, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashedpassword');";
               $result = mysqli_query($conn, $sqlinsert);
-              header("Location ../index.php?signup=success");
+              header("Location: ../index.php?signup=success");
               exit();
             }
           }

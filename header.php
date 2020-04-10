@@ -1,3 +1,7 @@
+<?php
+  session_start();
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +19,22 @@
         <li><a href="index.php">Accountmanager</a></li>
       </ul>
       <div class="nav-login">
-        <form>
-          <div class="login-inputs">
-            <input type="text" name="uid" placeholder="Username/Email">
-            <input type="password" name="pwd" placeholder="Password">
-          </div>
-          <button type="submit" name="submit">Login</button>
-        </form>
-      <a href="/buchhaltungssoftware_website/signup.php">Sign Up</a>
+        <?php
+          if(isset($_SESSION['username'])){
+            echo '<form action="/buchhaltungssoftware_website/includes/logout.inc.php" method="post">
+                    <button type="submit" name="submit">Logout</button>
+                  </form>';
+          } else {
+            echo '<form action="/buchhaltungssoftware_website/includes/login.inc.php" method="post">
+                    <div class="login-inputs">
+                      <input type="text" name="uid" placeholder="Username/Email">
+                      <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" name="submit">Login</button>
+                  </form>
+                  <a href="/buchhaltungssoftware_website/signup.php">Sign Up</a>';
+          }
+        ?>
       </div>
     </div>
   </nav>

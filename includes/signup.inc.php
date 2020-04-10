@@ -34,7 +34,7 @@
             header("Location: ../signup.php?signup=usertaken");
             exit();
           } else {
-            if($password /= $pwdvalid){
+            if($password !== $pwdvalid){
               header("Location: ../signup.php?signup=password");
               exit();
             } else {
@@ -43,7 +43,8 @@
               //Insert the user into the database
               $sqlinsert = "INSERT INTO users (username, firstname, lastname, email, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashedpassword');";
               $result = mysqli_query($conn, $sqlinsert);
-
+              header("Location ../index.php?signup=success");
+              exit();
             }
           }
           }

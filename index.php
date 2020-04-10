@@ -3,9 +3,12 @@
 ?>
 
 <section class="main-container">
-  <div class="main-wrapper">
-    <h2>Homepage</h2>
-  </div>
+  <?php
+  if(isset($_SESSION['username'])){
+    echo $_SESSION['username'];
+    echo "hello!";
+  }
+   ?>
 </section>
 
 <?php
